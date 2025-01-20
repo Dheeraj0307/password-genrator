@@ -3,7 +3,7 @@ import { createSlice, nanoid } from '@reduxjs/toolkit'
 const initialState = {
     todos: [{ id: nanoid(), text: 'hello world', completed: false }],
     isEdit: false,
-    changeData: null
+    changeData: null,
 }
 
 export const todoSlice = createSlice({

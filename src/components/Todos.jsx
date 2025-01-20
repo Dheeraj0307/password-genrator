@@ -7,10 +7,6 @@ const Todos = () => {
     const todos = useSelector((state) => state.todo.todos);
     const dispatch = useDispatch();
 
-    // const handleEdit = (todo) => {
-    //     setEdit(true);
-    //     setChangeData(todo);
-    // };
 
     return (
         <div className="container">

@@ -7,12 +7,25 @@ body {
     text-align: center;
 }
 
+.main-container {
+    background-image: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+    padding-top: 100px;
+    min-height: 100vh;
+}
+
+.todo-container {
+    margin-top: 100px;
+    background: #eeeeee;
+    padding: 50px;
+    border-radius: 15px;
+}
+
 .container {
     display: flex;
     width: 100%;
-    min-height: 100vh;
     align-items: center;
-    justify-content: center;
+    align-content: center;
+    flex-direction: column;
 }
 
 .todo-ctn {
@@ -38,6 +51,7 @@ body {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    width: 100%;
 }
 
 .todo-item {
@@ -53,6 +67,7 @@ body {
     color: #333;
     transition: all 0.3s ease;
     gap: 5%;
+    cursor: move;
 }
 
 .todo-item:hover {
