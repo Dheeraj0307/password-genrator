@@ -40,7 +40,7 @@ export const dragslice = createSlice({
             const { container, item, text } = action.payload;
             state.dragableTodo[container] = state.dragableTodo[container].map((arr) => {
                 if (arr.id === item.id) {
-                    arr.text = text
+                    return { ...arr, text }
                 }
                 return arr
             })
@@ -48,10 +48,25 @@ export const dragslice = createSlice({
         editTodo: (state, action) => {
             state.isEdit = action.payload.isEdit;
             state.changeData = action.payload.changeData
+        },
+        handleDropTodo: (state, action) => {
+            const { container, item, itemContainer } = action.payload
+
+            const updateSourceContainer = state.dragableTodo[itemContainer].filter((arr) => {
+                return arr.id !== item.id
+            })
+            const updateTargetContainer = [...state.dragableTodo[container], item]
+            if (container !== itemContainer) {
+                state.dragableTodo = {
+                    ...state.dragableTodo,
+                    [itemContainer]: updateSourceContainer,
+                    [container]: updateTargetContainer
+                }
+            }
         }
 
     }
 })
 
-export const { addtodo, removeTodo, updateTodo, editTodo } = dragslice.actions;
+export const { addtodo, removeTodo, updateTodo, editTodo, handleDropTodo } = dragslice.actions;
 export default dragslice.reducer
